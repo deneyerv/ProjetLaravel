@@ -18,10 +18,10 @@
                 <div class="thumbnail">
                     <img src="{{$product->imagePath}}" alt=""...">
                     <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <div class="description">Lorem ipmeeeiejedejikd  ehuidhedh hedhe de</div>
+                        <h3>{{$product->title}}</h3>
+                        <div class="description">{{$product->description}}</div>
                         <div class="pull-left price">
-                            150€
+                            {{$product->price}} €
                         </div>
                         <div class="clearfix">
                             <p><a href="#" class="btn btn-success pull-right" role="button">Ajouter au panier</a> </p>
