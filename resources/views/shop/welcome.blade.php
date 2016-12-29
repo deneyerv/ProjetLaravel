@@ -12,7 +12,7 @@
             <img src="C:\wamp64\www\laravel5\public\css\Pictures\test.jpg" alt="iconee">
             <div class="caption">
                 <h3>Thumbnail label</h3>
-                <p>Lorem ipsum</p>
+                <p>Lorem ipsm</p>
                 <p><a href="#" class="btn btn-primary" role="button">Ajouter</a> <a href="#" class="btn btn-default" role="button">Supprimer</a></p>
             </div>
         </div>
