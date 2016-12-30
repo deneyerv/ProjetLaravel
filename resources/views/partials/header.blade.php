@@ -27,7 +27,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Compte  <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Connection</a></li>
+                        <li><a href="{{route('user.signup')}}">Connection</a></li>
                         <li><a href="#">Historique</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Deconnection</a></li>
