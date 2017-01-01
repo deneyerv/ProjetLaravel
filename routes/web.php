@@ -19,11 +19,40 @@ Route::get('/', [
 Route::get('/signup', [
 
     'uses' => 'UserController@getSignup',
-    'as' => 'user.signup'
+    'as' => 'user.signup',
+    'middleware' => 'guest'
 ]);
 
 Route::post('/signup', [
 
     'uses' => 'UserController@postSignup',
-    'as' => 'user.signup'
+    'as' => 'user.signup',
+    'middleware' => 'guest'
+]);
+
+
+Route::get('/signin', [
+
+    'uses' => 'UserController@getSignin',
+    'as' => 'user.signin',
+    'middleware' => 'guest'
+]);
+
+Route::post('/signin', [
+
+    'uses' => 'UserController@postSignin',
+    'as' => 'user.signin',
+    'middleware' => 'guest'
+]);
+
+route::get('/user/profile', [
+    'uses' => 'UserController@getProfile',
+    'as' => 'user.profile',
+    'middleware' => 'auth'
+]);
+
+route::get('/user/logout', [
+    'uses' => 'UserController@getLogout',
+    'as' => 'user.logout',
+    'middleware' => 'auth'
 ]);
