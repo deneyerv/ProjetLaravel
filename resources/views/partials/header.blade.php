@@ -15,26 +15,46 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
 
-            </ul>
+
             <form class="navbar-form navbar-left">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Nom du produit">
                 </div>
                 <button type="submit" class="btn btn-default">Rechercher</button>
             </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{route('user.signup')}}">Inscription</a></li>
-                    <li><a href="#"> Panier  <i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Compte  <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{route('user.signin')}}">Connection</a></li>
-                        <li><a href="#">Historique</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="{{route('user.logout')}}">Deconnection</a></li>
 
-                    </ul>
-                </li>
+            </ul>
+
+
+
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"> Panier  <i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                @if(\Illuminate\Support\Facades\Auth::check())
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Compte  <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{route('user.profile')}}">Profil</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{route('user.logout')}}">Deconnection</a></li>
+                        </ul>
+                    </li>
+
+                @else
+
+
+
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Compte  <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{route('user.signin')}}">Connection</a></li>
+                            <li><a href="{{route('user.signup')}}">Inscription</a></li>
+                        </ul>
+                    </li>
+                @endif
+
+            </ul>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
