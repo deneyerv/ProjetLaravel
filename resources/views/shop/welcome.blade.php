@@ -16,7 +16,7 @@
 
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                    <img src="{{$product->imagePath}}" alt=""...">
+                    <img src="{{$product->imagePath}}" alt="...">
                     <div class="caption">
                         <h3>{{$product->title}}</h3>
                         <div class="description">{{$product->description}}</div>
@@ -24,7 +24,7 @@
                             {{$product->price}} €
                         </div>
                         <div class="clearfix">
-                            <p><a href="#" class="btn btn-success pull-right" role="button">Ajouter au panier</a> </p>
+                            <p><a href="{{route('product.addToCart', ['id' => $product ->id])}}" class="btn btn-success pull-right" role="button">Ajouter au panier</a> </p>
                         </div>
                     </div>
                 </div>

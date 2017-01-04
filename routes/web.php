@@ -56,3 +56,9 @@ route::get('/user/logout', [
     'as' => 'user.logout',
     'middleware' => 'auth'
 ]);
+
+route::get('/add-to-cart/{id}', [
+    'uses' => 'ProductController@getAddToCart',
+    'as' => 'product.addToCart',
+
+]);
