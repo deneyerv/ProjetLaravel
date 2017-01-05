@@ -9,7 +9,7 @@
     <h1 >Panier</h1>
     @foreach($products as $product)
         <div class="table-bordered">
-    <div class="row> table-bordered">
+    <div class="row table-bordered">
 
         <li class="list-group-item">
 
@@ -39,7 +39,7 @@
 
     </div>
 <div class="col-sm-6 col-md-6 col-md-offset-8 col-sm-offset-8">
-            <button type=button" class="btn btn-success"> Payer </button>
+            <a href="{{route('checkout')}}" type=button" class="btn btn-success"> Payer </a>
     </div>
 
 

@@ -71,3 +71,8 @@ Route::get('/', [
     'uses' => 'ProductController@getIndex',
     'as' => 'product.index'
 ]);
+
+Route::get('checkout', [
+    'uses' => 'ProductController@getCheckout',
+    'as' => 'checkout'
+]);
