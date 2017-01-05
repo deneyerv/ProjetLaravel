@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/', [
-    'uses' => 'ProductController@getIndex',
-    'as' => 'product.index'
-]);
+
+
 
 Route::get('/signup', [
 
@@ -61,4 +59,15 @@ route::get('/add-to-cart/{id}', [
     'uses' => 'ProductController@getAddToCart',
     'as' => 'product.addToCart',
 
+]);
+
+route::get('/shopping-cart', [
+    'uses' => 'ProductController@getCart',
+    'as' => 'product.shoppingCart',
+
+]);
+
+Route::get('/', [
+    'uses' => 'ProductController@getIndex',
+    'as' => 'product.index'
 ]);

@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Accueil</a>
+            <a class="navbar-brand" href="{{route('product.index')}}">Accueil</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -29,7 +29,9 @@
 
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"> Panier  <i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                <li><a href="{{route('product.shoppingCart')}}"> Panier  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <span class="badge">{{Session::has('cart') ? Session::get('cart')->totalQty : ''}}</span>
+                    </a></li>
                 @if(\Illuminate\Support\Facades\Auth::check())
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Compte  <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span class="caret"></span></a>
