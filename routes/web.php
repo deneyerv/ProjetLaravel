@@ -84,3 +84,16 @@ Route::post('searchCode', [
     'as' => 'searchCode'
  ]);
 
+Route::get('searchNes', [
+
+
+    'uses'=>'ProductController@searchNes',
+    'as' => 'searchNes'
+]);
+
+Route::get('searchSnes', [
+
+
+    'uses'=>'ProductController@searchSnes',
+    'as' => 'searchSnes'
+]);

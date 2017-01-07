@@ -34,7 +34,7 @@ class ProductController extends Controller
         //$products= DB::table('products')->where('title',"%$Search%");
        // $products = Product::select('select * from products where title = Montagne', [1]);
 $products = DB::table('products')
-        ->where('title','=',$Search)
+        ->where('title','like',$Search)
         ->get();
 
 
@@ -51,7 +51,48 @@ $products = DB::table('products')
 
     }
 
+    public function searchNes() {
 
+
+        //$products= DB::table('products')->where('title',"%$Search%");
+        // $products = Product::select('select * from products where title = Montagne', [1]);
+        $products = DB::table('products')
+            ->where('title','like','montagne')
+            ->get();
+
+
+        if($products == null)
+        {
+            $products = Product::all();
+         return view('shop.welcome', ['products' =>$products]);}
+
+        else{
+            // $products = Product::all(['id', 'name']);
+            return view('shop.welcome', ['products' =>$products]);
+
+        }}
+
+
+    public function searchSnes() {
+
+
+        //$products= DB::table('products')->where('title',"%$Search%");
+        // $products = Product::select('select * from products where title = Montagne', [1]);
+        $products = DB::table('products')
+            ->where('title','like','Desret')
+            ->get();
+
+
+        if($products == null)
+        {
+            $products = Product::all();
+            return view('shop.welcome', ['products' =>$products]);}
+
+        else{
+            // $products = Product::all(['id', 'name']);
+            return view('shop.welcome', ['products' =>$products]);
+
+        }}
     public function getAddToCart(Request $request, $id){
 
 
