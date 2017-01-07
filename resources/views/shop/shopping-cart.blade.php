@@ -7,20 +7,30 @@
 @section('content')
 @if(Session::has('cart'))
     <h1 >Panier</h1>
-    @foreach($products as $product)
-        <div class="table-bordered">
-    <div class="row table-bordered">
 
-        <li class="list-group-item">
 
-        <strong>{{$product['qty']}}</strong>
-            <strong>{{$product['item']['title']}}</strong>
-            <strong>{{$product['price'] }}€</strong>
-        </li>
-    </div>
-    </div>
-    @endforeach
-@endif
+
+        @foreach($products as $product)
+            <div class="table-bordered">
+                <div class="row table-bordered">
+
+                    <li class="list-group-item">
+
+                        <strong>{{$product['qty']}}</strong>
+                        <strong>{{$product['item']['title']}}</strong>
+                        <strong>{{$product['price'] }}€</strong>
+                    </li>
+                </div>
+            </div>
+
+        @endforeach
+
+
+
+
+
+
+
 
 <div class="row">
     <div class="col-md-6 col-md-offset-3 col-sm-offset-6">
@@ -45,4 +55,14 @@
 
     </div>
 
+@else
+
+
+
+    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+        <li class="list-group-item">
+            <strong>Vous n'avez rien selectionné </strong>
+
+    </div>
+@endif
 @endsection

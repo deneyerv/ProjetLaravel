@@ -76,3 +76,11 @@ Route::get('checkout', [
     'uses' => 'ProductController@getCheckout',
     'as' => 'checkout'
 ]);
+
+Route::post('searchCode', [
+
+
+    'uses'=>'ProductController@searchCode',
+    'as' => 'searchCode'
+ ]);
+

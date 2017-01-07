@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Session;
 use App\Cart;
+use Response;
+
 
 class ProductController extends Controller
 {
@@ -16,6 +20,35 @@ class ProductController extends Controller
 
 
         return view('shop.welcome', ['products' =>$products]);
+
+      /*  $search = \Request::get('search');
+        $products = Product::where('title','like','%'.$search);
+          return view('shop.welcome', ['products' =>$products]);*/
+
+
+    }
+
+    public function searchCode(Request $request) {
+
+        $Search=$request->searchCode;
+        //$products= DB::table('products')->where('title',"%$Search%");
+       // $products = Product::select('select * from products where title = Montagne', [1]);
+$products = DB::table('products')
+        ->where('title','=',$Search)
+        ->get();
+
+
+        if($products == null)
+
+        { return view('shop.welcome', ['products' =>$products]);}
+
+        else{
+       // $products = Product::all(['id', 'name']);
+        return view('shop.welcome', ['products' =>$products]);
+
+            }
+       // $user = DB::table('users')->where('name', 'John')->first();
+
     }
 
 
