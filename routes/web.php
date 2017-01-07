@@ -97,3 +97,16 @@ Route::get('searchSnes', [
     'uses'=>'ProductController@searchSnes',
     'as' => 'searchSnes'
 ]);
+
+Route::get('searchGamecube', [
+
+
+    'uses'=>'ProductController@searchGamecube',
+    'as' => 'searchGamecube'
+]);
+Route::get('searchN64', [
+
+
+    'uses'=>'ProductController@searchN64',
+    'as' => 'searchN64'
+]);

@@ -57,20 +57,13 @@ $products = DB::table('products')
         //$products= DB::table('products')->where('title',"%$Search%");
         // $products = Product::select('select * from products where title = Montagne', [1]);
         $products = DB::table('products')
-            ->where('title','like','montagne')
+            ->where('category','like','NES')
             ->get();
 
 
-        if($products == null)
-        {
-            $products = Product::all();
-         return view('shop.welcome', ['products' =>$products]);}
-
-        else{
-            // $products = Product::all(['id', 'name']);
             return view('shop.welcome', ['products' =>$products]);
 
-        }}
+        }
 
 
     public function searchSnes() {
@@ -79,7 +72,7 @@ $products = DB::table('products')
         //$products= DB::table('products')->where('title',"%$Search%");
         // $products = Product::select('select * from products where title = Montagne', [1]);
         $products = DB::table('products')
-            ->where('title','like','Desret')
+            ->where('category','like','SNES')
             ->get();
 
 
@@ -93,6 +86,34 @@ $products = DB::table('products')
             return view('shop.welcome', ['products' =>$products]);
 
         }}
+
+    public function searchGamecube() {
+
+
+        //$products= DB::table('products')->where('title',"%$Search%");
+        // $products = Product::select('select * from products where title = Montagne', [1]);
+        $products = DB::table('products')
+            ->where('category','like','GAMECUBE')
+            ->get();
+
+
+        return view('shop.welcome', ['products' =>$products]);
+
+    } public function searchN64() {
+
+
+    //$products= DB::table('products')->where('title',"%$Search%");
+    // $products = Product::select('select * from products where title = Montagne', [1]);
+    $products = DB::table('products')
+        ->where('category','like','N64')
+        ->get();
+
+
+    return view('shop.welcome', ['products' =>$products]);
+
+}
+
+
     public function getAddToCart(Request $request, $id){
 
 
@@ -100,6 +121,22 @@ $products = DB::table('products')
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->add($product, $product->id);
+
+
+        $request->session()->put('cart',$cart);
+        //dd($request->session()->get('cart'));
+        return redirect()->route('product.index');
+
+    }
+
+    public function getRemToCart(Request $request, $id){
+
+
+        $product = Product::find($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+
+        $cart->unset($product, $product->id);
 
         $request->session()->put('cart',$cart);
         //dd($request->session()->get('cart'));

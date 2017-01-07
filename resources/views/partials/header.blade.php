@@ -20,9 +20,9 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{action('ProductController@searchNes')}}">NES</a></li>
                         <li><a href="{{action('ProductController@searchSnes')}}">SNES</a></li>
-                        <li><a href="{{route('user.signup')}}">GAMECUBE</a></li>
-                        <li><a href="{{route('user.signup')}}">Gameboy color</a></li>
-                        <li><a href="{{route('user.signup')}}">Gameboy Advance</a></li>
+                        <li><a href="{{action('ProductController@searchN64')}}">N64</a></li>
+                        <li><a href="{{action('ProductController@searchGamecube')}}">GAMECUBE</a></li>
+
                     </ul>
                 </li>
             </ul>
