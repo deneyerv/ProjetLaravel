@@ -90,7 +90,23 @@ class ProductTableSeeder extends Seeder
 
         ]);$product9->save();
 
+        $product10 =new \App\Product([
+            'imagePath' => '\laravel5\public\css\Pictures\N641.jpg',
+            'title' => 'Zelda ocarina of time',
+            'description' => 'Jeu Zelda ocarina of time',
+            'price' => 15,
+            'category' =>'N64'
 
+        ]);$product10->save();
+
+        $product10 =new \App\Product([
+            'imagePath' => '\laravel5\public\css\Pictures\Gamecube1.jpg',
+            'title' => 'Zelda Windwaker',
+            'description' => 'Jeu Zelda Windwaker',
+            'price' => 20,
+            'category' =>'GAMECUBE'
+
+        ]);$product10->save();
 
 
     }
