@@ -7,6 +7,14 @@
 
 @section('content')
 
+@if(Session::has('message'))
+<p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+@endif
+
+ @if(Session::has('mes'))
+<p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+@endif
+
     @foreach($products ->chunk(3) as $productsChunk)
 
         <div class="row">

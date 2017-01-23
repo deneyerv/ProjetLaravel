@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Auth;
-
+use Session;
 
 use Illuminate\Http\Request;
 
@@ -50,6 +50,8 @@ class UserController extends Controller
 
             return redirect()->route('user.profile');
         }
+        Session::flash('message', 'Mauvais couple identifiant'); 
+        Session::flash('alert-class', 'alert-warning'); 
         return redirect()->back();
     }
 
@@ -64,6 +66,9 @@ class UserController extends Controller
     {
 
         Auth::logout();
+        Session::flash('message', 'Deconnecté'); 
+        Session::flash('alert-class', 'alert-success'); 
         return redirect()->route('product.index');
+
     }
 }

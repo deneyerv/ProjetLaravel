@@ -58,8 +58,15 @@ route::get('/user/logout', [
 route::get('/add-to-cart/{id}', [
     'uses' => 'ProductController@getAddToCart',
     'as' => 'product.addToCart',
+ ]);
 
+
+
+route::get('remToCart', [
+    'uses' => 'ProductController@getRemToCart',
+    'as' => 'remToCart',
 ]);
+
 
 route::get('/shopping-cart', [
     'uses' => 'ProductController@getCart',

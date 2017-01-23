@@ -8,6 +8,10 @@
 
         <div class="col-md- 4 col-md-offset-4">
             <h1>Connection</h1>
+
+           @if(Session::has('message'))
+<p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+@endif
             @if(count($errors)>0)
                 <div class="alert alert-danger">
                     @foreach($errors->all() as $error)

@@ -19,6 +19,9 @@
                         <strong>{{$product['qty']}}</strong>
                         <strong>{{$product['item']['title']}}</strong>
                         <strong>{{$product['price'] }}€</strong>
+                        <div class="clearfix">
+                            <p><a href="{{route('remToCart')}}"class="btn btn-danger pull-right" role="button">Supprimer</a> </p>
+                        </div>
                     </li>
                 </div>
             </div>
@@ -49,8 +52,7 @@
 
     </div>
 <div class="col-sm-6 col-md-6 col-md-offset-8 col-sm-offset-8">
-            <a href="{{route('checkout')}}" type=button" class="btn btn-success"> Payer </a>
-    </div>
+             <a href="{{route('checkout')}}" type=button" class="btn btn-success"> Payer </a> </div>
 
 
     </div>

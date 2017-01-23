@@ -29,10 +29,10 @@
             <ul class="nav navbar-nav">
 
 
-                <form class="navbar-form navbar-left" action="searchCode" method="post">
+                <form class="navbar-form navbar-left" action="searchCode" method="post" >
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <input type="text" class="form-control" name="searchCode">
+                        <input type="text" class="form-control" name="searchCode" required>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     </div>

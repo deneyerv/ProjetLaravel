@@ -121,9 +121,12 @@ $products = DB::table('products')
         $cart->add($product, $product->id);
 
 
+
         $request->session()->put('cart',$cart);
         //dd($request->session()->get('cart'));
-        return redirect()->route('product.index')->with('success', 'Ajouté au panier');
+        Session::flash('message', 'Ajouté au panier'); 
+        Session::flash('alert-class', 'alert-success'); 
+        return redirect()->route('product.index');
 
     }
 
@@ -134,7 +137,7 @@ $products = DB::table('products')
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
 
-        $cart->unset($product, $product->id);
+        $cart->rem($product, $product->id);
 
         $request->session()->put('cart',$cart);
         //dd($request->session()->get('cart'));
@@ -153,8 +156,11 @@ $products = DB::table('products')
 
         $oldcart = Session::get('cart');
         $cart = new Cart($oldcart);
+     
+    
 
         return view('shop.shopping-cart', ['products' =>$cart->items, 'totalPrice' => $cart->totalPrice]);
+
 
     }
 
