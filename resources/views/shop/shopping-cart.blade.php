@@ -19,14 +19,16 @@
                         <strong>{{$product['qty']}}</strong>
                         <strong>{{$product['item']['title']}}</strong>
                         <strong>{{$product['price'] }}€</strong>
-                        <div class="clearfix">
-                            <p><a href="{{route('remToCart')}}"class="btn btn-danger pull-right" role="button">Supprimer</a> </p>
-                        </div>
+                       
                     </li>
                 </div>
             </div>
 
         @endforeach
+
+         <div class="clearfix">
+                            <p><a href="{{route('remToCart')}}"class="btn btn-danger pull-right" role="button">Supprimer le panier</a> </p>
+                        </div>
 
 
 

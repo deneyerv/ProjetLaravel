@@ -130,18 +130,25 @@ $products = DB::table('products')
 
     }
 
-    public function getRemToCart(Request $request, $id){
+    public function getRemToCart(){
 
 
-        $product = Product::find($id);
+       /* $product = Product::find($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
 
         $cart->rem($product, $product->id);
 
         $request->session()->put('cart',$cart);
-        //dd($request->session()->get('cart'));
-        return redirect()->route('product.index');
+        //dd($request->session()->get('cart'));*/
+
+        
+        $oldcart=null;
+       $cart=null;
+       $cart = new Cart($oldcart);
+
+       Session::put('cart');
+        return view('shop.shopping-cart');
 
     }
 
