@@ -7,8 +7,14 @@
 
 @section('content')
 
+
+
+
     @foreach($products ->chunk(3) as $productsChunk)
 
+        @if($productsChunk->isEmpty());
+        <div class="col-sm-6 col-md-4"> Pas de résultats à la recherche</div>
+        @else
         <div class="row">
             @foreach($productsChunk as $product)
 
@@ -29,7 +35,9 @@
                     </div>
                 </div>
             </div>
+
                 @endforeach
+                @endif
         </div>
         @endforeach
 
