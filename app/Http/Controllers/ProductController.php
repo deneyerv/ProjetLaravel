@@ -24,8 +24,6 @@ class ProductController extends Controller
       /*  $search = \Request::get('search');
         $products = Product::where('title','like','%'.$search);
           return view('shop.welcome', ['products' =>$products]);*/
-
-
     }
 
     public function searchCode(Request $request) {
@@ -125,7 +123,7 @@ $products = DB::table('products')
 
         $request->session()->put('cart',$cart);
         //dd($request->session()->get('cart'));
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')->with('success', 'Ajouté au panier');
 
     }
 

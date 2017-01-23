@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
 
 
         });
-
+/*
         Schema::create('subscriptions', function ($table) {
             $table->increments('id');
             $table->integer('user_id');
@@ -39,7 +39,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('trial_ends_at')->nullable();
             $table->timestamp('ends_at')->nullable();
             $table->timestamps();
-        });
+        });*/
     }
 
     /**
@@ -50,5 +50,6 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::drop('users');
+
     }
 }
