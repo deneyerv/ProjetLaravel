@@ -4,14 +4,13 @@
 @section('content')
 
     <div class="row">
-
-
         <div class="col-md- 4 col-md-offset-4">
             <h1>Connection</h1>
 
-           @if(Session::has('message'))
-<p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
-@endif
+            @if(Session::has('message'))
+            <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+            @endif
+
             @if(count($errors)>0)
                 <div class="alert alert-danger">
                     @foreach($errors->all() as $error)
@@ -19,6 +18,7 @@
                     @endforeach
                 </div>
             @endif
+
             <form action="{{route('user.signin')}}" method="post">
                 <div class="form-group">
                     <label for="email">E-Mail</label>
@@ -31,8 +31,6 @@
                 <button type="submit" class="btn btn-primary">Connection</button>
                 {{csrf_field()}}
             </form>
+    </div>
 
-
-
-        </div>
 @endsection

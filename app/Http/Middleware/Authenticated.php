@@ -24,13 +24,14 @@ class Authenticated
      * @param  string|null  $guard
      * @return mixed
      */
+    
     public function handle($request, Closure $next, $guard = null)
     {
-
-
-            if(Auth::guard($guard)->guest()){
-                if($request->ajax()|| $request->wantsJson()){
-    return response('Unauthorized access.', 401);
+        if(Auth::guard($guard)->guest())
+        {
+                if($request->ajax()|| $request->wantsJson())
+                {
+                    return response('Unauthorized access.', 401);
                 }
                 return redirect()->route('user.signin');
         }

@@ -19,10 +19,10 @@ class ProductTableSeeder extends Seeder
             'category' =>'NES'
         ]);$product->save();
 
-            $product1 =new \App\Product([
+        $product1 =new \App\Product([
                 'imagePath' => 'http://i2.cdscdn.com/pdt2/5/2/8/1/700x700/nin3561292168528/rw/console-super-nintendo.jpg',
                 'title' => 'SNES',
-                'description' => 'La montagne is',
+                'description' => 'Console Snes',
                 'price' => 200,
                 'category' =>'SNES'
             
@@ -35,7 +35,7 @@ class ProductTableSeeder extends Seeder
             'price' => 40,
             'category' =>'N64' ]);$product2->save();
 
-            $product3 =new \App\Product([
+        $product3 =new \App\Product([
                 'imagePath' => 'https://upload.wikimedia.org/wikipedia/commons/2/2b/GameCube-Console-Set.png',
                 'title' => 'GAMECUBE',
                 'description' => 'CONSOLE GAMECUBE',
@@ -78,8 +78,7 @@ class ProductTableSeeder extends Seeder
         'description' => 'Jeu Donkey Kong Country',
         'price' => 25,
         'category' =>'SNES'
-
-    ]);$product8->save();
+         ]);$product8->save();
 
         $product9 =new \App\Product([
             'imagePath' => 'http://image.jeuxvideo.com/images/sn/d/r/drlasn0f.jpg',
@@ -87,7 +86,6 @@ class ProductTableSeeder extends Seeder
             'description' => 'Jeu Dragons Lair',
             'price' => 15,
             'category' =>'SNES'
-
         ]);$product9->save();
 
 

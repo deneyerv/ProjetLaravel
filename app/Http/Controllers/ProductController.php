@@ -17,171 +17,121 @@ class ProductController extends Controller
 
     {
         $products = Product::all();
-
-
         return view('shop.welcome', ['products' =>$products]);
-
-      /*  $search = \Request::get('search');
-        $products = Product::where('title','like','%'.$search);
-          return view('shop.welcome', ['products' =>$products]);*/
     }
 
-    public function searchCode(Request $request) {
+    public function searchCode(Request $request) 
+    {
 
         $Search=$request->searchCode;
-        //$products= DB::table('products')->where('title',"%$Search%");
-       // $products = Product::select('select * from products where title = Montagne', [1]);
-$products = DB::table('products')
+        
+        $products = DB::table('products')
         ->where('title','like',$Search)
         ->get();
 
+        if($products->isEmpty())
 
-        if($products == null)
-
-        { return view('shop.welcome', ['products' =>$products]);}
-
-        else{
-       // $products = Product::all(['id', 'name']);
-        return view('shop.welcome', ['products' =>$products]);
-
-            }
-       // $user = DB::table('users')->where('name', 'John')->first();
-
-    }
-
-    public function searchNes() {
-
-
-        //$products= DB::table('products')->where('title',"%$Search%");
-        // $products = Product::select('select * from products where title = Montagne', [1]);
-        $products = DB::table('products')
-            ->where('category','like','NES')
-            ->get();
-
-
+        { 
+            Session::flash('message', 'Pas de correspondance'); 
+            Session::flash('alert-class', 'alert-success'); 
+            $products = DB::table('products')->get();
             return view('shop.welcome', ['products' =>$products]);
-
         }
 
+        else
 
-    public function searchSnes() {
-
-
-        //$products= DB::table('products')->where('title',"%$Search%");
-        // $products = Product::select('select * from products where title = Montagne', [1]);
-        $products = DB::table('products')
-            ->where('category','like','SNES')
-            ->get();
-
-
-        if($products == null)
         {
-            $products = Product::all();
-            return view('shop.welcome', ['products' =>$products]);}
-
-        else{
-            // $products = Product::all(['id', 'name']);
+            Session::flash('message', 'Résultat(s)'); 
+            Session::flash('alert-class', 'alert-success'); 
             return view('shop.welcome', ['products' =>$products]);
+        }
+    }
 
-        }}
-
-    public function searchGamecube() {
-
-
-        //$products= DB::table('products')->where('title',"%$Search%");
-        // $products = Product::select('select * from products where title = Montagne', [1]);
-        $products = DB::table('products')
-            ->where('category','like','GAMECUBE')
-            ->get();
-
-
-        return view('shop.welcome', ['products' =>$products]);
-
-    } public function searchN64() {
-
-
-    //$products= DB::table('products')->where('title',"%$Search%");
-    // $products = Product::select('select * from products where title = Montagne', [1]);
-    $products = DB::table('products')
-        ->where('category','like','N64')
+    public function searchNes() 
+    {
+         $products = DB::table('products')
+        ->where('category','like','NES')
         ->get();
-
-
-    return view('shop.welcome', ['products' =>$products]);
-
-}
-
-
-    public function getAddToCart(Request $request, $id){
-
-
-        $product = Product::find($id);
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
-        $cart->add($product, $product->id);
-
-
-
-        $request->session()->put('cart',$cart);
-        //dd($request->session()->get('cart'));
-        Session::flash('message', 'Ajouté au panier'); 
-        Session::flash('alert-class', 'alert-success'); 
-        return redirect()->route('product.index');
+        return view('shop.welcome', ['products' =>$products]);
 
     }
 
-    public function getRemToCart(){
+
+    public function searchSnes() 
+    {
+         $products = DB::table('products')
+        ->where('category','like','SNES')
+        ->get();
+         return view('shop.welcome', ['products' =>$products]);
+
+    }
+
+    public function searchGamecube() 
+    {
+          $products = DB::table('products')
+        ->where('category','like','GAMECUBE')
+        ->get();
+          return view('shop.welcome', ['products' =>$products]);
+
+    }
+
+    public function searchN64() 
+    {
+         $products = DB::table('products')
+        ->where('category','like','N64')
+        ->get();
+         return view('shop.welcome', ['products' =>$products]);
+
+    }
 
 
-       /* $product = Product::find($id);
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
+    public function getAddToCart(Request $request, $id)
+    {
+         $product = Product::find($id);
+         $oldCart = Session::has('cart') ? Session::get('cart') : null;
+         $cart = new Cart($oldCart);
+         $cart->add($product, $product->id);
+         $request->session()->put('cart',$cart);
+         Session::flash('message', 'Ajouté au panier'); 
+         Session::flash('alert-class', 'alert-success'); 
+         return redirect()->route('product.index');
 
-        $cart->rem($product, $product->id);
+    }
 
-        $request->session()->put('cart',$cart);
-        //dd($request->session()->get('cart'));*/
-
-        
+    public function getRemToCart()
+    {
         $oldcart=null;
-       $cart=null;
-       $cart = new Cart($oldcart);
-
-       Session::put('cart');
+        $cart=null;
+        $cart = new Cart($oldcart);
+        Session::put('cart');
         return view('shop.shopping-cart');
 
     }
 
     public function getCart()
     {
-        if(!Session::has('cart')){
-
-
-
+        
+        if(!Session::has('cart'))
+        {
             return view('shop.shopping-cart');
         }
 
         $oldcart = Session::get('cart');
         $cart = new Cart($oldcart);
-     
-    
-
         return view('shop.shopping-cart', ['products' =>$cart->items, 'totalPrice' => $cart->totalPrice]);
+     }
 
+    public function getCheckout() 
+    {
 
-    }
-
-public function getCheckout() {
-
-        if(!Session::has('cart')) {
+        if(!Session::has('cart')) 
+        {
             return view('shop.shopping-cart');
         }
+
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         $total=$cart->totalPrice;
         return view('shop.checkout', ['total' => $total]);
-
-
-
-}
+    }
 }
