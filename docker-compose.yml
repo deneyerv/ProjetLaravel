@@ -1,7 +1,0 @@
-laravel:
-  image: reflexions/docker-laravel:latest
-  ports:
-    - 80:80
-  env_file: .env
-  volumes:
-    - .:/var/www/laravel
